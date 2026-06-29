@@ -1,4 +1,4 @@
-package com.yunus.microservice_education;
+package com.yunus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
