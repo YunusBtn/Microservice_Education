@@ -6,6 +6,7 @@ import com.yunus.dto.AccountsDto;
 import com.yunus.dto.CustomerDto;
 import com.yunus.entity.Accounts;
 import com.yunus.entity.Customer;
+import com.yunus.exception.CustomerAlreadyExistsException;
 import com.yunus.exception.ResourceNotFoundException;
 import com.yunus.mapper.AccountsMapper;
 import com.yunus.mapper.CustomerMapper;
