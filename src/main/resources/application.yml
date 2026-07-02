@@ -15,13 +15,9 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
-        default_schema: randevu
+        default_schema: microservice_db
 
   datasource:
     url: jdbc:postgresql://localhost:5432/postgre_db
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-
-jwt:
-  secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION}
