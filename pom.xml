@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yunus</groupId>
-    <artifactId>Microservice_Education</artifactId>
+    <artifactId>accounts</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Microservice_Education</name>
-    <description>Microservice_Education</description>
+    <name>accounts</name>
+    <description>accounts</description>
     <url/>
     <licenses>
         <license/>
