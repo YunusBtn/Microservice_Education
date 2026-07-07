@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mikroservis
+    name: mikroservis_account
   profiles:
     active: dev
 
@@ -15,7 +15,7 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
-        default_schema: microservice_db
+        default_schema: microservice_account
 
   datasource:
     url: jdbc:postgresql://localhost:5432/postgre_db
