@@ -10,4 +10,8 @@ public class CustomerAlreadyExistsException extends RuntimeException {
         super(message);
     }
 
+    public CustomerAlreadyExistsException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
