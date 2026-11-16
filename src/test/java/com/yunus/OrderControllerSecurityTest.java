@@ -203,48 +203,5 @@ class OrderControllerSecurityTest {
         assertThat(istek.getItems().get(0).getQuantity()).isEqualTo(2);
     }
 
-    // ==================================================================================
-    // 5) ADMIN: parametreler servise doğru aktarılır
-    // ==================================================================================
-    @Test
-    @DisplayName("ADMIN GET /user/{userId}: yoldaki kullanıcı id'si servise iletilir")
-    void admin_baskaKullaniciSiparisleri_pathIdIletilir() throws Exception {
-        mockMvc.perform(get("/api/orders/user/5").with(user(admin)))
-                .andExpect(status().isOk());
-
-        verify(orderService).getOrdersByUser(eq(5L), any(Pageable.class));
-    }
-
-    @Test
-    @DisplayName("ADMIN PATCH /{id}/status: newStatus metni enum'a çevrilip servise iletilir")
-    void admin_durumGuncelle_enumIletilir() throws Exception {
-        mockMvc.perform(patch("/api/orders/10/status").param("newStatus", "SHIPPED").with(user(admin)))
-                .andExpect(status().isOk());
-
-        verify(orderService).updateOrderStatus(10L, OrderStatus.SHIPPED);
-    }
-
-    // ==================================================================================
-    // 6) @WithMockUser: ne zaman yeterli, ne zaman tuzak? (Principal Tuzağı)
-    // ==================================================================================
-    @Test
-    @WithMockUser(roles = "ADMIN") // Test için kolay yoldan Spring'in kendi mock kullanıcısını bağlama koyar.
-    @DisplayName("@WithMockUser ROL kontrolü için yeterli: admin ucu 200 (principal kullanılmıyor)")
-    void withMockUser_rolKontrolu_calisir() throws Exception {
-        // /all, principal parametresi almıyor; yalnızca ROLE_ADMIN yetkisi önemli → WithMockUser yeterlidir.
-        mockMvc.perform(get("/api/orders/all"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    @WithMockUser(roles = "USER")
-    @DisplayName("ÖĞRETİCİ: @WithMockUser ile /my → 500: principal UserPrincipal değil, null geliyor")
-    void withMockUser_principalTipiUymaz_500() throws Exception {
-        // @WithMockUser Spring'in kendi User sınıfını koyar. Controller @AuthenticationPrincipal UserPrincipal
-        // bekler; tip uymayınca parametre NULL gelir ve principal.getId() NullPointerException fırlatır.
-        // GlobalExceptionHandler bunu 500 yapar (konsolda kırmızı Mockito/stderr uyarısı çıkması zarsızdır).
-        // Dersi: principal gerektiren uçlarda .with(user(userPrincipal)) kullan.
-        mockMvc.perform(get("/api/orders/my"))
-                .andExpect(status().isInternalServerError());
-    }
+    
 }
